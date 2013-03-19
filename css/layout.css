@@ -1,0 +1,116 @@
+body{
+    background: #282828;
+}
+.contain{
+    width: 600px;
+    height: 500px;
+    margin: 30px auto;
+    background: #fff;
+}
+.contain-music{
+    width: 250px;
+    float: left;
+    position: relative;
+}
+.contain-lyc{
+    width: 348px;
+    float: left;
+    position: relative;
+}
+.contain-music header{
+    height: 75px;
+    background: #d2c1a7;
+}
+.user,.user-message{
+    float: left;
+}
+.user img{
+    width: 52px;
+    height: 52px;
+    padding:10px;
+}
+.user-message{
+    padding: 10px;
+    color: white;
+}
+.music-list{
+    height: 394px;
+    overflow: hidden;
+    clear: left;
+}
+.music-menu{
+    width:233px;
+    float: left;
+    position: relative;
+}
+.music-menu li{
+    height:30px;
+    padding-left:20px;
+    /*margin-bottom: 1px;*/
+    border-bottom: 1px #d1c0a5 dashed;
+    line-height: 30px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.music-menu li:hover{
+    background: #fbd6be;
+}
+.music-menu-on{
+    background: #fe8f45;
+}
+.music-scroll{
+    width: 17px;
+    float: left;
+    background:#cac9c6;
+    height: 394px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.music-scroll a{
+    background: white;
+    border-radius: 3px;
+    height: 40px;
+    width: 13px;
+    margin:2px auto;
+    display: block;
+    position: relative;
+}
+.view-lyc{
+    height:470px;
+}
+.view-lyc p{
+    text-align: center;
+    line-height: 20px;
+}
+#some-button{
+    border-left: 1px white solid;
+}
+footer{
+    height: 30px;
+    background: #d1c0a5;
+    clear: both;
+    padding-left: 290px;
+}
+footer a{
+    display: inline-block;
+    width: 22px;
+    height:25px;
+    background: url(../images/button.png) no-repeat;
+    margin:2px 30px auto auto;
+    display: none;
+}
+#button-stop{
+    background-position: -2px center;
+}
+#button-pre{
+    background-position: -67px center;
+}
+#button-pause{
+    background-position: -132px center;
+}
+#button-next{
+    background-position: -189px center;
+}
+#button-logo{
+    background-position: -262px center;
+}

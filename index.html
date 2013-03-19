@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<title>Music</title>
+<link href="css/reset-min.css" media="all" rel="stylesheet"  />
+<link href="css/layout.css" media="all" rel="stylesheet" />
+</head>
+<body>
+  <div class="contain">
+      <div class="contain-music">
+	 <header>
+             <div class="user">
+		  <img src="images/logo.png" alt="user"/>
+             </div>
+	     <div class="user-message">
+		 <p>hello friends</p>
+		 <a id="user-like" href="javascript:void(0);"></a>
+	     </div>
+	 </header>
+	 <div class="music-list">
+	     <ul class="music-menu">
+		     <li data-num="1">[周杰伦]一路向北-周杰伦</li>
+		     <li data-num="2">[周杰伦]周杰伦－断了的弦</li>
+		     <li data-num="3">vitas</li>
+		     <li data-num="4">班得瑞《追梦人》-班得瑞</li>
+		     <li data-num="5">陈慧娴 - 千千阙歌</li>
+		     <li data-num="6">陈旭-哥只是个传说</li>
+		     <li data-num="7">大海</li>
+		     <li data-num="8">飞天</li>
+		     <li data-num="9">古筝-追梦人</li>
+		     <li data-num="10">黄征-爱情诺曼底</li>
+		     <li data-num="11">火影 火影忍者剧场版</li>
+		     <li data-num="12">将军</li>
+		     <li data-num="13">兰亭序周杰伦</li>
+		     <li data-num="14">刘可 - 寂寞才说爱</li>
+		     <li data-num="15">迷情仙境</li>
+		     <li data-num="16">名侦探柯南 转动命运之轮</li>
+		     <li data-num="17">怒放的生命</li>
+		     <li data-num="18">其实很爱你</li>
+		     <li data-num="19">千年缘</li>
+		     <li data-num="20">千纸鹤 邰正宵</li>
+		     <li data-num="21">青鸟 火影忍者疾风传 </li>
+		     <li data-num="22">如果当时</li>
+		     <li data-num="23">水龙吟-余情幽梦 </li>
+		     <li data-num="24">萧亚轩 《吻》</li>
+		     <li data-num="25">思乡曲-马思聪</li>
+		     <li data-num="26">心然 - 千年缘 </li>
+		     <li data-num="27">新垣结衣 - piece</li>
+		     <li data-num="28">周传雄-黄昏</li>
+		     <li data-num="29">周杰伦 - 兰亭序</li>
+		     <li data-num="30">周杰伦 - 最后的战役</li>
+
+	     </ul>
+	     <div class="music-scroll">
+		 <a id="scroll-button" href="javascript:void(0);" style="top:0" draggable="false"></a>
+	     </div>
+	 </div>
+      </div>
+      <div class="contain-lyc">
+	  <div class="view-lyc">
+	      <div id="timer"></div>
+	      <p>歌词正在开发中。。。。。</p>
+	      <p>进度条也正在开发中。。。。</p>
+	      <p>debug。。。。</p>
+	  </div>
+      </div>
+      <footer>
+	  <a href="javascript:void(0);" id="button-stop" title="停止"></a>
+	  <a href="javascript:void(0);" id="button-pre" title="上一首"></a>
+	  <a href="javascript:void(0);" id="button-pause" title=""></a>
+	  <a href="javascript:void(0);" id="button-next" title="下一首"></a>
+	  <a href="javascript:void(0);" id="button-logo" title="提高音量"></a>
+      </footer>
+  </div>
+
+</body>
+<script src="javascript/buzz-min.js" type="text/javascript"></script>
+<script src="javascript/jQuery/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="javascript/main-v2.js"></script>
+<script>
+    /* move */
+    $(function(){var f,c;var a=false;var e;var d=$("#scroll-button");var b=$(".music-menu");d.mousedown(function(g){f=g.pageY;c=parseInt($(this).css("top"));a=true});$(document).mouseup(function(g){a=false}).mousemove(function(h){if(a){d.css("top",h.pageY-f+c);if(parseInt(d.css("top"))<0){a=false;d.css("top",0)}else{if(parseInt(d.css("top"))>350){a=false;d.css("top",350)}}e=parseInt(d.css("top"))/350;var g=parseInt(b.css("height"))-394;b.animate({top:-g*e},10)}})});
+    /* 未压缩版本在 https://github.com/mhyailz/music-res/blob/master/drog.js */
+    /* music */
+   // var mySound=[];var FM;var pause=false;$(".music-menu li").click(function(){var a=$(this).attr("data-num");if(FM==a){return}FM=a;musicPlay(FM);$(".music-menu li").removeClass("music-menu-on");$(this).addClass("music-menu-on");$("footer a").css({display:"inline-block",backgroundImage:"url(../music/images/button.png)"});$(this).blur()});$("#button-pause").click(function(){mySound[FM].togglePlay();$("footer a").css("backgroundImage",function(){if(!pause){pause=!pause;return"url(../music/images/button-click.png)"}else{pause=!pause;return"url(../music/images/button.png)"}})});$("#button-logo").click(function(){mySound[FM].increaseVolume(5)});$("#button-next").click(function(){if(FM<28){FM++}else{FM=1}$(".music-menu li").removeClass("music-menu-on").eq(FM-1).addClass("music-menu-on");musicPlay(FM);$("footer a").css({backgroundImage:"url(../music/images/button.png)"})});$("#button-pre").click(function(){if(FM>1){FM--}else{FM=30}$(".music-menu li").removeClass("music-menu-on").eq(FM-1).addClass("music-menu-on");musicPlay(FM);$("footer a").css({backgroundImage:"url(../music/images/button.png)"})});function musicPlay(b){mySound[b]=new buzz.sound("../music/music/"+FM+"",{formats:["mp3","ogg","acc"]});for(var a=1;a<mySound.length;a++){if(mySound[a]&&a!=b){mySound[a].stop();delete mySound[a]}}mySound[b].play();pause=false};
+    /* 未压缩版本在 https://github.com/mhyailz/music-res/blob/master/music.js */
+</script>
+</html>
